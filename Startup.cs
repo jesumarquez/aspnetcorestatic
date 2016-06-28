@@ -22,6 +22,9 @@ namespace aspnetcorestatic
                 logger.LogInformation("Finished handling request.");
             });
 
+            //custom middleware using class
+            app.UseRequestLogger();
+
             app.Run(context =>
             {
                 return context.Response.WriteAsync("Hello from ASP.NET Core!");
