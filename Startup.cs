@@ -9,7 +9,19 @@ namespace aspnetcorestatic
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+
+            var logger = loggerFactory.CreateLogger("custom middleware");
+
             app.UseStaticFiles();
+            
+            //custom middleware
+            app.Use(async (context, next) =>
+            {
+                logger.LogInformation("Handling request.");
+                await next.Invoke();
+                logger.LogInformation("Finished handling request.");
+            });
+
             app.Run(context =>
             {
                 return context.Response.WriteAsync("Hello from ASP.NET Core!");
