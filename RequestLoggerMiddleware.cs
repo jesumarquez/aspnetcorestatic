@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -18,6 +19,10 @@ namespace aspnetcorestatic
         public async Task Invoke(HttpContext context)
         {
             _logger.LogInformation("Handling request: " + context.Request.Path);
+            if(context.Request.Query.ContainsKey("throw"))
+            {
+                throw new Exception("Thowing exception!!!");
+            }
             await _next.Invoke(context);
             _logger.LogInformation("Finished handling request.");
         }

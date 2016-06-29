@@ -9,6 +9,13 @@
             "args": [],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "run",
+            "args": [
+                "run"
+            ],
+            "showOutput": "always"  
         }
     ]
 }
