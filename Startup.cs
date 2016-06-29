@@ -13,6 +13,7 @@ namespace aspnetcorestatic
 
             var logger = loggerFactory.CreateLogger("custom middleware");
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             if(env.IsDevelopment())
